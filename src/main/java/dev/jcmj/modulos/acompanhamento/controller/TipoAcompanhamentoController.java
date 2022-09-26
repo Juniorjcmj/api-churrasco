@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -31,6 +32,17 @@ public class TipoAcompanhamentoController {
     public Response newFruit(TipoAcompanhamento a) {
         a.id = null;
         a.persist();
+        return Response.status(Status.CREATED).entity(a).build();
+    }
+
+    @Transactional
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateAcompanhamento(TipoAcompanhamento a) {
+        TipoAcompanhamento model = TipoAcompanhamento.findById(a.id);
+        model.descricao = a.descricao;
+        model.persist();
         return Response.status(Status.CREATED).entity(a).build();
     }
 }
