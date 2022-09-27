@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response.Status;
 
 import dev.jcmj.modulos.clientes.domain.model.Cliente;
 
-@Path(value = "/V1/usuarios")
+@Path(value = "/V1/clientes")
 public class ClienteController {
     
     @GET
