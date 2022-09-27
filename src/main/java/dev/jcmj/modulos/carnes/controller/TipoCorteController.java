@@ -2,7 +2,6 @@ package dev.jcmj.modulos.carnes.controller;
 
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -16,45 +15,40 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import dev.jcmj.modulos.carnes.controller.dto.CarnesDto;
-import dev.jcmj.modulos.carnes.controller.dto.CarnesMapperToDto;
-import dev.jcmj.modulos.carnes.domain.model.Carnes;
+import dev.jcmj.modulos.carnes.domain.model.TipoCorte;
 
-@Path("/V1/carnes")
-public class CarnesController {
+@Path("/V1/tipo-corte")
+public class TipoCorteController {
     
-    @Inject
-    CarnesMapperToDto mapper;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CarnesDto> fruits() {
-        return mapper.listModelToListDto(Carnes.listAll()) ;
+    public List<TipoCorte> fruits() {
+        return TipoCorte.listAll() ;
     }
   
     @Transactional
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response newFruit(CarnesDto a) {       
-        Carnes model = mapper.dtoToModel(a);   
+    public Response newFruit(TipoCorte a) {  
       
-        model.persist();
-        return Response.status(Status.CREATED).entity(mapper.modelToDto(model)).build();
+        a.persist();
+        return Response.status(Status.CREATED).entity(a).build();
     }
     @Transactional
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(CarnesDto a) {
-     Carnes model =  Carnes.findById(Long.parseLong(a.getId()));
-     Carnes ac =     mapper.dtoToModelUpdate(model, a );
+    public Response update(TipoCorte a) {
         try {          
-            ac.persist();
-            return Response.status(Status.CREATED).entity(mapper.modelToDto(ac)).build();
+            TipoCorte model = TipoCorte.findById(a.id);
+            model.descricao = a.descricao;
+            model.persist();
+            return Response.status(Status.CREATED).entity(model).build();
             
         } catch (Exception e) {
-            return Response.status(Status.NOT_IMPLEMENTED).entity(e).build();
+            return Response.status(Status.NOT_IMPLEMENTED).build();
         }
     }
 
@@ -64,12 +58,11 @@ public class CarnesController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response detete(@QueryParam("id") Long id) {
         try {
-         Carnes.deleteById(id);
+         TipoCorte.deleteById(id);
          return Response.status(Status.OK).build();
             
         } catch (Exception e) {
             return Response.status(Status.BAD_REQUEST).entity(e.getMessage()).build();
         }
     }
-
 }

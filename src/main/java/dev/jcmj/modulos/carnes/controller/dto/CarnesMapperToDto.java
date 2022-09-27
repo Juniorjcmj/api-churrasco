@@ -29,6 +29,9 @@ public class CarnesMapperToDto {
 
     public CarnesDto modelToDto(Carnes model){
         CarnesDto dto = new CarnesDto();
+        if(model.id!= null){
+         dto.setId(model.id.toString());
+        }
         dto.setAtePorPessoa(model.atePorPessoa.toString());
         dto.setCusto(model.custo.toString());
         dto.setItem(model.item);

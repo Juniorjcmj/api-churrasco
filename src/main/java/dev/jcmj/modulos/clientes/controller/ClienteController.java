@@ -1,8 +1,7 @@
-package dev.jcmj.modulos.carnes.controller;
+package dev.jcmj.modulos.clientes.controller;
 
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -16,45 +15,42 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import dev.jcmj.modulos.carnes.controller.dto.CarnesDto;
-import dev.jcmj.modulos.carnes.controller.dto.CarnesMapperToDto;
-import dev.jcmj.modulos.carnes.domain.model.Carnes;
+import dev.jcmj.modulos.clientes.domain.model.Cliente;
 
-@Path("/V1/carnes")
-public class CarnesController {
+@Path(value = "/V1/usuarios")
+public class ClienteController {
     
-    @Inject
-    CarnesMapperToDto mapper;
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CarnesDto> fruits() {
-        return mapper.listModelToListDto(Carnes.listAll()) ;
+    public List<Cliente> fruits() {
+        return Cliente.listAll() ;
     }
   
     @Transactional
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response newFruit(CarnesDto a) {       
-        Carnes model = mapper.dtoToModel(a);   
+    public Response newFruit(Cliente a) {  
       
-        model.persist();
-        return Response.status(Status.CREATED).entity(mapper.modelToDto(model)).build();
+        a.persist();
+        return Response.status(Status.CREATED).entity(a).build();
     }
     @Transactional
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(CarnesDto a) {
-     Carnes model =  Carnes.findById(Long.parseLong(a.getId()));
-     Carnes ac =     mapper.dtoToModelUpdate(model, a );
+    public Response update(Cliente a) {
         try {          
-            ac.persist();
-            return Response.status(Status.CREATED).entity(mapper.modelToDto(ac)).build();
+            Cliente model = Cliente.findById(a.id);
+            model.nome = a.nome;
+            model.cel = a.cel;
+            model.cpf = a.cpf;
+            model.email = a.email;            
+            model.persist();
+            return Response.status(Status.CREATED).entity(model).build();
             
         } catch (Exception e) {
-            return Response.status(Status.NOT_IMPLEMENTED).entity(e).build();
+            return Response.status(Status.NOT_IMPLEMENTED).build();
         }
     }
 
@@ -64,7 +60,7 @@ public class CarnesController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response detete(@QueryParam("id") Long id) {
         try {
-         Carnes.deleteById(id);
+            Cliente.deleteById(id);
          return Response.status(Status.OK).build();
             
         } catch (Exception e) {
