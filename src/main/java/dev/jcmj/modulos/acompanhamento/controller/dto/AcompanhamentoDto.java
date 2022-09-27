@@ -1,4 +1,4 @@
-package dev.jcmj.modulos.acompanhamento.controller.input;
+package dev.jcmj.modulos.acompanhamento.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -16,9 +16,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import dev.jcmj.modulos.acompanhamento.controller.input.AcompanhamentoDto;
-
-import dev.jcmj.modulos.acompanhamento.controller.input.ModeltoDto;
+import dev.jcmj.modulos.acompanhamento.controller.dto.AcompanhamentoDto;
+import dev.jcmj.modulos.acompanhamento.controller.dto.ModeltoDto;
 import dev.jcmj.modulos.acompanhamento.domain.model.Acompanhamento;
 
 @Path("/V1/acompanhamento")

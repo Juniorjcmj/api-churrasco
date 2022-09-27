@@ -8,7 +8,7 @@ import java.util.Locale;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 
-import dev.jcmj.modulos.acompanhamento.controller.input.AcompanhamentoDto;
+import dev.jcmj.modulos.acompanhamento.controller.dto.AcompanhamentoDto;
 import dev.jcmj.modulos.acompanhamento.domain.model.Acompanhamento;
 
 public class ModelMapperConfig {
