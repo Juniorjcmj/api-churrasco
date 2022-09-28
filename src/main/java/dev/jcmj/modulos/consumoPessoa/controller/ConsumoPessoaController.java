@@ -29,8 +29,8 @@ public class ConsumoPessoaController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ConsumoPessoa> fruits() {
-        return ConsumoPessoa.listAll();
+    public List<ConsumoPessoaDto> fruits() {
+        return   mapper.listModelToListDto(ConsumoPessoa.listAll());
     }
    
 

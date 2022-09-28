@@ -1,8 +1,12 @@
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\bebidas\controller\BebidaController.java
+D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\servicosDiversos\controller\ServicoDiversoController.java
+D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\servicosDiversos\domain\model\ServicoDiversos.java
+D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\servicosDiversos\controller\dto\ServicoDiversoDto.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\acompanhamento\controller\dto\ModeltoDto.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\acompanhamento\controller\dto\AcompanhamentoDto.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\consumoPessoa\controller\dto\ConsumoPessoaMapperToDto.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\carnes\domain\model\TipoCorte.java
+D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\orcamento\controller\OrcamentoController.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\acompanhamento\controller\AcompanhamentoController.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\bebidas\domain\model\Bebida.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\bebidas\controller\dto\BebidaDto.java
@@ -13,6 +17,7 @@ D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\consumoPessoa\controller\Consu
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\carnes\controller\CarnesController.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\clientes\domain\model\Cliente.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\share\modelMapper\ModelMapperConfig.java
+D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\servicosDiversos\controller\dto\ServicoDiversoMapperToDto.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\carnes\controller\dto\CarnesMapperToDto.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\carnes\domain\model\Unidade.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\carnes\controller\dto\CarnesDto.java
@@ -25,3 +30,4 @@ D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\acompanhamento\domain\model\Ti
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\carnes\domain\model\Carnes.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\clientes\controller\ClienteController.java
 D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\consumoPessoa\domain\model\ConsumoPessoa.java
+D:\GitHub\dev.jcmj\src\main\java\dev\jcmj\modulos\orcamento\domain\model\Orcamento.java
