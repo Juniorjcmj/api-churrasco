@@ -64,15 +64,22 @@ public class OrcamentoServiceImpl implements IOrcamentoService {
     @Transactional
     @Override
     public Orcamento setBebidas(Long idOrcamento, Long idBebida) {
+
         Orcamento model = Orcamento.findById(idOrcamento);
-        Bebida modelBebida = Bebida.findById(idBebida); 
-        model.bebidas.add(modelBebida);
-       return update(model);
+        try {
+            Bebida modelBebida = Bebida.findById(idBebida); 
+            List<Bebida> bebidas = model.bebidas;
+            bebidas.add(modelBebida);
+            model.bebidas = bebidas;
+            return update(model);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+       return model;
     }
     @Transactional
     @Override
     public Orcamento setAcompanhamento(Long idOrcamento, Long idAcompanhamento) {
-
         Orcamento model = Orcamento.findById(idOrcamento);
         try {
             Acompanhamento modelAcompanhamento = Acompanhamento.findById(idAcompanhamento); 
@@ -82,7 +89,7 @@ public class OrcamentoServiceImpl implements IOrcamentoService {
             return update(model);
             
         } catch (Exception e) {
-            var et =e;
+           
         }
         return model;
     }
@@ -90,20 +97,35 @@ public class OrcamentoServiceImpl implements IOrcamentoService {
     @Override
     public Orcamento setCarnes(Long idOrcamento, Long idCarnes) {
         Orcamento model = Orcamento.findById(idOrcamento);
-        Carnes modelCarnes = Carnes.findById(idCarnes); 
-        model.carnes.add(modelCarnes);
-        return update(model);
-        
+        try {
+            Carnes modelCarnes = Carnes.findById(idCarnes); 
+            List<Carnes> carnes =  model.carnes;
+            carnes.add(modelCarnes);
+            model.carnes = carnes;
+            return update(model);
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return model;
         
     }
     @Transactional
     @Override
     public Orcamento setServicosDiversos(Long idOrcamento, Long idServicoDiverso) {
         Orcamento model = Orcamento.findById(idOrcamento);
-        ServicoDiversos modelCarnes = Carnes.findById(idServicoDiverso); 
-        model.servicoDiversos.add(modelCarnes);
-        return update(model);
-        
+
+        try {
+            ServicoDiversos modelCarnes = Carnes.findById(idServicoDiverso); 
+          List<ServicoDiversos> servicos =  model.servicoDiversos;
+          servicos.add(modelCarnes);
+          model.servicoDiversos = servicos;
+            return update(model);
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return model;
     }
     
 

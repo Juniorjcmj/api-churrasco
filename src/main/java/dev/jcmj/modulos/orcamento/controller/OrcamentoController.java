@@ -85,10 +85,11 @@ public class OrcamentoController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response setCarnes(@QueryParam("idOrcamento") Long idOrcamento, @QueryParam("idCarnes") Long idCarnes) {
         if (idOrcamento != null && idCarnes != null) {
-            this.service.setCarnes(idOrcamento, idCarnes);
-            return Response.status(Status.CREATED).build();
+            return Response.status(Status.CREATED)
+            .entity(modelToDto.modelToDto(this.service.setCarnes(idOrcamento, idCarnes))).build();
         }
         return Response.status(Status.FOUND).build();
     }
@@ -108,10 +109,11 @@ public class OrcamentoController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response setServicoDiverso(@QueryParam("idOrcamento") Long idOrcamento, @QueryParam("idServicoDiverso") Long idServicoDiverso) {
         if (idOrcamento != null && idServicoDiverso != null) {
-            this.service.setServicosDiversos(idOrcamento, idServicoDiverso);
-            return Response.status(Status.CREATED).build();
+            return Response.status(Status.CREATED)
+            .entity(modelToDto.modelToDto(this.service.setServicosDiversos(idOrcamento, idServicoDiverso))).build();
         }
         return Response.status(Status.FOUND).build();
     }
@@ -119,10 +121,11 @@ public class OrcamentoController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response setbebidas(@QueryParam("idOrcamento") Long idOrcamento, @QueryParam("idBebidas") Long idBebidas) {
         if (idOrcamento != null && idBebidas != null) {
-            this.service.setBebidas(idOrcamento, idBebidas);
-            return Response.status(Status.CREATED).build();
+            return Response.status(Status.CREATED)
+            .entity(modelToDto.modelToDto(this.service.setBebidas(idOrcamento, idBebidas))).build();
         }
         return Response.status(Status.FOUND).build();
     }
