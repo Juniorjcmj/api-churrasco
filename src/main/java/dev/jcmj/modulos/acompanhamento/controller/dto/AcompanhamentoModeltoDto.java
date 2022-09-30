@@ -9,7 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import dev.jcmj.modulos.acompanhamento.domain.model.Acompanhamento;
 
 @ApplicationScoped
-public class ModeltoDto {
+public class AcompanhamentoModeltoDto {
     
     public AcompanhamentoDto  modeltoDto (Acompanhamento model){   
        AcompanhamentoDto dto = new AcompanhamentoDto();    

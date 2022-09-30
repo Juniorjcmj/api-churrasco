@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import dev.jcmj.modulos.acompanhamento.controller.dto.AcompanhamentoDto;
-import dev.jcmj.modulos.acompanhamento.controller.dto.ModeltoDto;
+import dev.jcmj.modulos.acompanhamento.controller.dto.AcompanhamentoModeltoDto;
 import dev.jcmj.modulos.acompanhamento.domain.model.Acompanhamento;
 
 @Path("/V1/acompanhamento")
@@ -32,7 +32,7 @@ public class AcompanhamentoController {
 //  }
 
     @Inject
-    ModeltoDto modelToDto;    
+    AcompanhamentoModeltoDto modelToDto;    
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
