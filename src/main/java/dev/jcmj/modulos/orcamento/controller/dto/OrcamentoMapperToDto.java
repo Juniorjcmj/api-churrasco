@@ -103,7 +103,7 @@ public class OrcamentoMapperToDto {
             model.criancas = new BigDecimal(dto.getCriancas().replace(".", "").replace(",","."));
             model.homens = new BigDecimal(dto.getHomens().replace(".", "").replace(",", "."));
             model.mulheres = new BigDecimal(dto.getMulheres().replace(".", "").replace(",", "."));
-            model.custoPessoal = new BigDecimal(dto.getCustoPessoal().replace(".", "").replace(",", ","));
+            model.custoPessoal = new BigDecimal(dto.getCustoPessoal().replace(".", "").replace(",", "."));
             model.custoTotalComInsumos = new BigDecimal(dto.getCustoTotalComInsumos().replace(".", "").replace(",", "."));
             model.dataEvento =  LocalDate.parse(dto.getDataEvento(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
             model.valorFinalServico = new BigDecimal(dto.getValorFinalServico().replace(".", "").replace(",", "."));

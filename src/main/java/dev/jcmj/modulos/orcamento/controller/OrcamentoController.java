@@ -96,10 +96,11 @@ public class OrcamentoController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response setAcompanhamento(@QueryParam("idOrcamento") Long idOrcamento, @QueryParam("idAcompanhamento") Long idAcompanhamento) {
-        if (idOrcamento != null && idAcompanhamento != null) {
-            this.service.setAcompanhamento(idOrcamento, idAcompanhamento);
-            return Response.status(Status.CREATED).build();
+        if (idOrcamento != null && idAcompanhamento != null) {            
+            return Response.status(Status.CREATED)
+            .entity(modelToDto.modelToDto(this.service.setAcompanhamento(idOrcamento, idAcompanhamento))).build();
         }
         return Response.status(Status.FOUND).build();
     }

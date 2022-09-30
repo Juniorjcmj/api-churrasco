@@ -17,3 +17,6 @@ acrescentar no arquivo louch.json o codigo abaixo
     }
 #Swagger
 http://localhost:8080/q/swagger-ui/
+
+#doc 
+http://localhost:8080/q/dev/

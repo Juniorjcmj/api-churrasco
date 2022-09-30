@@ -1,5 +1,7 @@
 package dev.jcmj.modulos.orcamento.domain.serviceImpl;
 
+import java.util.List;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 
@@ -70,11 +72,19 @@ public class OrcamentoServiceImpl implements IOrcamentoService {
     @Transactional
     @Override
     public Orcamento setAcompanhamento(Long idOrcamento, Long idAcompanhamento) {
+
         Orcamento model = Orcamento.findById(idOrcamento);
-        Acompanhamento modelAcompanhamento = Acompanhamento.findById(idAcompanhamento); 
-        model.acompanhamentos.add(modelAcompanhamento);
-        return update(model);
-        
+        try {
+            Acompanhamento modelAcompanhamento = Acompanhamento.findById(idAcompanhamento); 
+            List<Acompanhamento> acompanhamantos = model.acompanhamentos;
+            acompanhamantos.add(modelAcompanhamento);
+            model.acompanhamentos = acompanhamantos;
+            return update(model);
+            
+        } catch (Exception e) {
+            var et =e;
+        }
+        return model;
     }
     @Transactional
     @Override
