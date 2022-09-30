@@ -17,7 +17,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import dev.jcmj.modulos.orcamento.controller.dto.OrcamentoDto;
-import dev.jcmj.modulos.orcamento.controller.dto.OrcamentoInput;
 import dev.jcmj.modulos.orcamento.controller.dto.OrcamentoMapperToDto;
 import dev.jcmj.modulos.orcamento.domain.model.Orcamento;
 import dev.jcmj.modulos.orcamento.domain.service.IOrcamentoService;
@@ -30,11 +29,11 @@ public class OrcamentoController {
    @Inject
    IOrcamentoService service;
 
-    // @GET
-    // @Produces(MediaType.APPLICATION_JSON)
-    // public List<OrcamentoDto> getAll() {
-    //     return  modelToDto.listModelToListDto(Orcamento.listAll());
-    // }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<OrcamentoDto> getAll() {
+        return  modelToDto.listModelToListDto(Orcamento.listAll());
+    }
     
    
     @POST
@@ -43,33 +42,30 @@ public class OrcamentoController {
     @Transactional
     public Response insert(OrcamentoDto dto) {  
         try {
-            Orcamento model = modelToDto.dtoToModel(dto); 
-           
-            Orcamento.persist(model);   
-            //this.service.insert(model);
+            Orcamento model = modelToDto.dtoToModel(dto);           
             return Response.status(Status.CREATED)
-            .entity(model
+            .entity(modelToDto.modelToDto(this.service.insert(model))
             ).build();
             
         } catch (Exception e) {
             return Response.status(Status.BAD_REQUEST).entity(e.getMessage()).build();
         }
     }
-    // @Transactional
-    // @PUT
-    // @Consumes(MediaType.APPLICATION_JSON)
-    // @Produces(MediaType.APPLICATION_JSON)
-    // public Response update(OrcamentoDto a) {
-    //  Orcamento model =  Orcamento.findById(Long.parseLong(a.getId()));
-    //  Orcamento ac =     modelToDto.dtoToModelUpdate(model,a);
-    //     try {          
-    //         this.service.update(ac);
-    //         return Response.status(Status.CREATED).entity(modelToDto.modelToDto(ac)).build();
+    @Transactional
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response update(OrcamentoDto a) {
+     Orcamento model =  Orcamento.findById(Long.parseLong(a.getId()));
+     Orcamento ac =     modelToDto.dtoToModelUpdate(model,a);
+        try {          
+            this.service.update(ac);
+            return Response.status(Status.CREATED).entity(modelToDto.modelToDto(ac)).build();
             
-    //     } catch (Exception e) {
-    //         return Response.status(Status.BAD_REQUEST).entity(e.getMessage()).build();
-    //     }
-    // }
+        } catch (Exception e) {
+            return Response.status(Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
+    }
 
     @Transactional
     @DELETE

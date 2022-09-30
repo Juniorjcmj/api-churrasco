@@ -9,12 +9,12 @@ import dev.jcmj.modulos.orcamento.domain.model.Orcamento;
 public interface IOrcamentoService {
     
    
-    public void insert(Orcamento model);
+    public Orcamento insert(Orcamento model);
    
-    public void update(Orcamento model);
+    public Orcamento update(Orcamento model);
     
-    public void setBebidas(Long idOrcamento, Long idBebida);
-    public void setAcompanhamento(Long idOrcamento, Long idAcompanhamento);
-    public void setCarnes(Long idOrcamento, Long idCarnes);
-    public void setServicosDiversos(Long idOrcamento, Long idServicoDiverso);
+    public Orcamento setBebidas(Long idOrcamento, Long idBebida);
+    public Orcamento setAcompanhamento(Long idOrcamento, Long idAcompanhamento);
+    public Orcamento setCarnes(Long idOrcamento, Long idCarnes);
+    public Orcamento setServicosDiversos(Long idOrcamento, Long idServicoDiverso);
 }
