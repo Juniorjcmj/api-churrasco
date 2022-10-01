@@ -20,3 +20,9 @@ http://localhost:8080/q/swagger-ui/
 
 #doc 
 http://localhost:8080/q/dev/
+
+docker pull postgres
+docker run --network host -e POSTGRES_PASSWORD=postgres -d postgres
+
+docker pull jboss/keycloak
+docker run -d -p 8180:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak
