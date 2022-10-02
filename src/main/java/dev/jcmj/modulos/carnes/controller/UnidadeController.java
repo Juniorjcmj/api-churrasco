@@ -4,6 +4,7 @@ package dev.jcmj.modulos.carnes.controller;
 import java.util.List;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -31,7 +32,7 @@ public class UnidadeController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response newFruit(Unidade a) {  
+    public Response newFruit(@Valid Unidade a) {  
       
         a.persist();
         return Response.status(Status.CREATED).entity(a).build();
@@ -40,7 +41,7 @@ public class UnidadeController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(Unidade a) {
+    public Response update(@Valid Unidade a) {
         try {          
             Unidade model = Unidade.findById(a.id);
             model.descricao = a.descricao;

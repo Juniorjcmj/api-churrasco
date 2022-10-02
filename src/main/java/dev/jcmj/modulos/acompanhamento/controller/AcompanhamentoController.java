@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -52,17 +53,21 @@ public class AcompanhamentoController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response newFruit(AcompanhamentoDto a) {       
-        Acompanhamento model = modelToDto.dtoToModel(a);   
-      
-        model.persist();
-        return Response.status(Status.CREATED).entity(modelToDto.modeltoDto(model)).build();
+    public Response newAcompanhamento(@Valid AcompanhamentoDto a) { 
+       try {
+           Acompanhamento model = modelToDto.dtoToModel(a);      
+           model.persist();
+           return Response.status(Status.CREATED).entity(modelToDto.modeltoDto(model)).build();
+        
+       } catch (Exception e) {
+        return Response.status(Status.NOT_IMPLEMENTED).entity(e.getMessage()).build();
+       }
     }
     @Transactional
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(AcompanhamentoDto a) {
+    public Response update(@Valid AcompanhamentoDto a) {
      Acompanhamento model =  Acompanhamento.findById(Long.parseLong(a.getId()));
      Acompanhamento ac =     modelToDto.dtoToModelUpdate(a, model);
         try {          
@@ -70,7 +75,7 @@ public class AcompanhamentoController {
             return Response.status(Status.CREATED).entity(modelToDto.modeltoDto(ac)).build();
             
         } catch (Exception e) {
-            return Response.status(Status.NOT_IMPLEMENTED).entity(e).build();
+            return Response.status(Status.NOT_IMPLEMENTED).entity(e.getMessage()).build();
         }
     }
 

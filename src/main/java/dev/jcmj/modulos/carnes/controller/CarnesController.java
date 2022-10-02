@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -36,7 +37,7 @@ public class CarnesController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response newFruit(CarnesDto a) {       
+    public Response newFruit(@Valid CarnesDto a) {       
         Carnes model = mapper.dtoToModel(a);   
       
         model.persist();
@@ -46,7 +47,7 @@ public class CarnesController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(CarnesDto a) {
+    public Response update(@Valid CarnesDto a) {
      Carnes model =  Carnes.findById(Long.parseLong(a.getId()));
      Carnes ac =     mapper.dtoToModelUpdate(model, a );
         try {          
