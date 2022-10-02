@@ -18,7 +18,7 @@ public class ConsumoPessoaMapperToDto {
          model.descricao = dto.getDescricao();
          model.tipoConvidado = dto.getTipoConvidado();
          model.qntdd = new BigDecimal(dto.getQntdd().replace(".", "").replace(",",".")) ;
-         model.un = new BigDecimal(dto.getUn().replace(".", "").replace(",","."));
+         model.un = dto.getUn();
         return model;
     }
 
@@ -38,7 +38,7 @@ public class ConsumoPessoaMapperToDto {
         model.descricao = dto.getDescricao();
         model.tipoConvidado = dto.getTipoConvidado();
         model.qntdd = new BigDecimal(dto.getQntdd().replace(".", "").replace(",",".")) ;
-        model.un = new BigDecimal(dto.getUn().replace(".", "").replace(",","."));
+        model.un = dto.getUn();
 
         return model;
     }
