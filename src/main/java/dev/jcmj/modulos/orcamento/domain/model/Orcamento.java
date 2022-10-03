@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import dev.jcmj.modulos.acompanhamento.domain.model.Acompanhamento;
 import dev.jcmj.modulos.bebidas.domain.model.Bebida;
@@ -20,13 +21,19 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
 public class Orcamento extends PanacheEntity {
-    
+    @NotNull(message = "Data do evento é obrigatória")
     public LocalDate  dataEvento;
+    @NotNull(message = "Nome do Cliente é obrigatório")
     public String clienteNome;
+    @NotNull(message = "Quantidade de homens é obrigatória")
      public BigDecimal homens;
+     @NotNull(message = "Quantidade de mulheres é obrigatória")
      public BigDecimal mulheres;
+     @NotNull(message = "Quantidade de crianças é obrigatória")
      public BigDecimal criancas;
+     @NotNull(message = "Margem de segurança é obrigatória")
      public BigDecimal margemSeguranca;
+     
      public BigDecimal comissaoServico;
      public BigDecimal custoTotalComInsumos;
      public BigDecimal percentualLucro;

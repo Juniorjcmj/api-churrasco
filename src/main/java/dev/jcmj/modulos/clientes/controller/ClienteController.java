@@ -3,6 +3,7 @@ package dev.jcmj.modulos.clientes.controller;
 import java.util.List;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -30,7 +31,7 @@ public class ClienteController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response newFruit(Cliente a) {  
+    public Response newFruit(@Valid Cliente a) {  
       
         a.persist();
         return Response.status(Status.CREATED).entity(a).build();
@@ -39,7 +40,7 @@ public class ClienteController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(Cliente a) {
+    public Response update(@Valid Cliente a) {
         try {          
             Cliente model = Cliente.findById(a.id);
             model.nome = a.nome;
