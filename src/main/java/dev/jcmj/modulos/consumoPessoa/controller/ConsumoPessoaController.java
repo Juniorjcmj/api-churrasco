@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -38,7 +39,7 @@ public class ConsumoPessoaController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response newBebida(ConsumoPessoaDto b) {
+    public Response newBebida(@Valid ConsumoPessoaDto b) {
         ConsumoPessoa model =  mapper.dtoToModel(b);
       
         model.persist();
@@ -49,7 +50,7 @@ public class ConsumoPessoaController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateBebida(ConsumoPessoaDto a) {
+    public Response updateBebida(@Valid ConsumoPessoaDto a) {
         ConsumoPessoa model = ConsumoPessoa.findById(Long.parseLong(a.getId()));
         mapper.dtoToModelUpdate(model, a);
         model.persist();

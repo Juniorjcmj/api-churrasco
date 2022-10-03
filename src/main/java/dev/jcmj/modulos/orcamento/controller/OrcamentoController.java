@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -40,7 +41,7 @@ public class OrcamentoController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response insert(OrcamentoDto dto) {  
+    public Response insert(@Valid OrcamentoDto dto) {  
         try {
             Orcamento model = modelToDto.dtoToModel(dto);           
             return Response.status(Status.CREATED)
@@ -55,7 +56,7 @@ public class OrcamentoController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(OrcamentoDto a) {
+    public Response update(@Valid OrcamentoDto a) {
      Orcamento model =  Orcamento.findById(Long.parseLong(a.getId()));
      Orcamento ac =     modelToDto.dtoToModelUpdate(model,a);
         try {          
