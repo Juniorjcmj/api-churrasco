@@ -26,3 +26,9 @@ docker run --network host -e POSTGRES_PASSWORD=postgres -d postgres
 
 docker pull jboss/keycloak
 docker run -d -p 8180:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak
+
+#Video implementação keycloak
+https://www.youtube.com/watch?v=Pqg88fR3nfUhttps://www.youtube.com/watch?v=Pqg88fR3nfU
+
+#Baixando imagem do keycloak com perfil de dev
+docker run --name keycloak -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -p 8180:8080 quay.io/keycloak/keycloak:17.0.0 start-dev

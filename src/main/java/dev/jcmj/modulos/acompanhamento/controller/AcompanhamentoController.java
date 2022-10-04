@@ -20,8 +20,10 @@ import javax.ws.rs.core.Response.Status;
 import dev.jcmj.modulos.acompanhamento.controller.dto.AcompanhamentoDto;
 import dev.jcmj.modulos.acompanhamento.controller.dto.AcompanhamentoModeltoDto;
 import dev.jcmj.modulos.acompanhamento.domain.model.Acompanhamento;
+import io.quarkus.security.Authenticated;
 
 @Path("/V1/acompanhamento")
+@Authenticated
 public class AcompanhamentoController {  
     
  //Outra forma de fazer injeção de dependencia
