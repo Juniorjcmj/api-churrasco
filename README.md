@@ -1,11 +1,11 @@
 
-#Instalação JDK 17
+# Instalação JDK 17
 https://adoptium.net/
 
-#Compilar quarkus
+# Compilar quarkus
 ./mvnw compile quarkus:dev
 
-#Configurar modo debug
+# Configurar modo debug
 https://www.youtube.com/watch?v=3E0xGpC7W3I
 acrescentar no arquivo louch.json o codigo abaixo
  {
@@ -15,10 +15,10 @@ acrescentar no arquivo louch.json o codigo abaixo
             "hostName": "localhost",
             "port": 5005
     }
-#Swagger
+# Swagger
 http://localhost:8080/q/swagger-ui/
 
-#doc 
+# doc 
 http://localhost:8080/q/dev/
 
 docker pull postgres
@@ -27,8 +27,14 @@ docker run --network host -e POSTGRES_PASSWORD=postgres -d postgres
 docker pull jboss/keycloak
 docker run -d -p 8180:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak
 
-#Video implementação keycloak
+# Video implementação keycloak
 https://www.youtube.com/watch?v=Pqg88fR3nfUhttps://www.youtube.com/watch?v=Pqg88fR3nfU
 
-#Baixando imagem do keycloak com perfil de dev
+# Baixando imagem do keycloak com perfil de dev
 docker run --name keycloak -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -p 8180:8080 quay.io/keycloak/keycloak:17.0.0 start-dev
+#limitando a quantidade de memoria e processador usado no docker
+# Comando para subir o postgres com 512 de memoria estabelecida
+ docker run -it -m 512M — name heuristic_tharp
+# Comando para subir o keyclok com memoria de 512 
+docker run -it -m 512M — name keycloak
+docker run -it -m 512M --name keycloak -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -p 8180:8080 quay.io/keycloak/keycloak:17.0.0 start-dev
